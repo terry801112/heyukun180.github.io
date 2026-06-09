@@ -1,14 +1,473 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Guangzhou Chuanyang Cultural Communication Co., Ltd.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRAGON MOTO - Extreme Motor World | Premium Motorcycle Marketplace</title>
+    <meta name="description" content="DRAGON MOTO - Premium motorcycles, performance parts, and professional riding gear. Worldwide shipping from Japan, Italy, and Germany.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --gold: #D4AF37;
+            --gold-dim: rgba(212,175,55,0.7);
+            --gold-bg: rgba(212,175,55,0.06);
+            --red: #E53E3E;
+            --dark: #0D0D0D;
+            --dark-elevated: #141414;
+            --text: #FFFFFF;
+            --text-muted: rgba(255,255,255,0.55);
+            --text-dim: rgba(255,255,255,0.35);
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(13,13,13,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212,175,55,0.1);
+            z-index: 1000;
+            padding: 0 24px;
+        }
+        .header-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px;
+        }
+        .header-logo {
+            display: flex; align-items: center; gap: 12px;
+        }
+        .header-logo img {
+            height: 36px; width: auto;
+        }
+        .header-logo span {
+            font-size: 18px; font-weight: 700;
+            letter-spacing: 2px; color: var(--gold);
+        }
+        nav a {
+            color: var(--text-muted); text-decoration: none;
+            font-size: 13px; letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-left: 32px;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--gold); }
+
+        /* Sections */
+        section {
+            padding: 100px 24px 80px;
+            max-width: 1100px; margin: 0 auto;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 64px;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse 70% 50% at 50% 20%, rgba(212,175,55,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 80% 80%, rgba(229,62,62,0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-logo {
+            max-width: 400px; width: 70%;
+            margin-bottom: 40px;
+            filter: drop-shadow(0 0 40px rgba(212,175,55,0.12));
+        }
+        .hero h1 {
+            font-size: 42px; font-weight: 700;
+            letter-spacing: 6px; text-transform: uppercase;
+            color: var(--text); margin-bottom: 16px;
+        }
+        .hero-subtitle {
+            font-size: 16px; color: var(--gold-dim);
+            letter-spacing: 4px; text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .hero-desc {
+            font-size: 16px; color: var(--text-muted);
+            max-width: 520px; margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 13px; font-weight: 600;
+            letter-spacing: 3px; text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: var(--gold); color: var(--dark);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 28px; font-weight: 700;
+            letter-spacing: 4px; text-transform: uppercase;
+            color: var(--text); text-align: center;
+            margin-bottom: 12px;
+        }
+        .section-subtitle {
+            font-size: 13px; color: var(--gold-dim);
+            letter-spacing: 3px; text-transform: uppercase;
+            text-align: center; margin-bottom: 56px;
+        }
+        .section-divider {
+            width: 40px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto 56px; opacity: 0.5;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 48px; align-items: center;
+        }
+        .about-text p {
+            color: var(--text-muted); font-size: 15px;
+            line-height: 1.9; margin-bottom: 16px;
+        }
+        .about-text strong {
+            color: var(--gold); font-weight: 600;
+        }
+        .about-stats {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .stat-box {
+            background: var(--dark-elevated);
+            border: 1px solid rgba(212,175,55,0.1);
+            border-radius: 8px; padding: 28px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 32px; font-weight: 700;
+            color: var(--gold); margin-bottom: 4px;
+        }
+        .stat-label {
+            font-size: 12px; color: var(--text-dim);
+            letter-spacing: 2px; text-transform: uppercase;
+        }
+
+        /* Products */
+        .products-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .product-card {
+            background: var(--dark-elevated);
+            border: 1px solid rgba(212,175,55,0.1);
+            border-radius: 8px; padding: 32px;
+            text-align: center;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .product-card:hover {
+            border-color: rgba(212,175,55,0.3);
+            transform: translateY(-4px);
+        }
+        .product-icon {
+            font-size: 40px; margin-bottom: 16px;
+        }
+        .product-card h3 {
+            font-size: 16px; font-weight: 600;
+            color: var(--text); letter-spacing: 1px;
+            text-transform: uppercase; margin-bottom: 8px;
+        }
+        .product-card p {
+            font-size: 13px; color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Shipping */
+        .shipping-list {
+            display: flex; justify-content: center;
+            gap: 48px; flex-wrap: wrap;
+        }
+        .shipping-item {
+            display: flex; align-items: center; gap: 16px;
+        }
+        .shipping-flag {
+            font-size: 32px;
+        }
+        .shipping-info h4 {
+            font-size: 14px; font-weight: 600;
+            color: var(--text); letter-spacing: 1px;
+        }
+        .shipping-info p {
+            font-size: 12px; color: var(--text-dim);
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        .contact-info h3 {
+            font-size: 18px; font-weight: 600;
+            color: var(--gold); margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .contact-info p {
+            font-size: 14px; color: var(--text-muted);
+            line-height: 1.8; margin-bottom: 8px;
+        }
+        .contact-info .label {
+            font-size: 11px; color: var(--text-dim);
+            letter-spacing: 2px; text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            background: var(--dark-elevated);
+            border: 1px solid rgba(212,175,55,0.15);
+            border-radius: 6px; padding: 12px 16px;
+            color: var(--text); font-size: 14px;
+            margin-bottom: 16px;
+            outline: none; transition: border-color 0.3s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--gold);
+        }
+        .contact-form textarea {
+            min-height: 120px; resize: vertical;
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--text-dim);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(212,175,55,0.1);
+            padding: 40px 24px;
+            text-align: center;
+        }
+        .footer-inner {
+            max-width: 1100px; margin: 0 auto;
+        }
+        .footer-brand {
+            font-size: 16px; font-weight: 700;
+            color: var(--gold); letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+        .footer-desc {
+            font-size: 12px; color: var(--text-dim);
+            margin-bottom: 16px;
+        }
+        .footer-company {
+            font-size: 11px; color: rgba(255,255,255,0.2);
+            line-height: 1.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero h1 { font-size: 28px; letter-spacing: 3px; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .products-grid { grid-template-columns: 1fr; }
+            .about-stats { grid-template-columns: 1fr 1fr; }
+            section { padding: 60px 20px 40px; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Guangzhou Chuanyang Cultural Communication Co., Ltd.</h1>
-    <p>Official Developer Website</p>
-    <p>We are a professional cultural communication company focusing on mobile applications like Tenancy Defender and MCN services.</p>
-    <hr>
-    <p>Contact: heyukun180@gmail.com</p>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <div class="header-logo">
+                <img src="logo.png" alt="DRAGON MOTO">
+                <span>DRAGON MOTO</span>
+            </div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#products">Products</a>
+                <a href="#shipping">Shipping</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="logo.png" alt="DRAGON MOTO" class="hero-logo">
+            <h1>Extreme Motor World</h1>
+            <div class="hero-subtitle">Premium Motorcycle Marketplace</div>
+            <p class="hero-desc">
+                Your gateway to the world's finest motorcycles, performance parts, and professional riding gear.
+                From legendary Japanese sportbikes to Italian superbikes — delivered to your door worldwide.
+            </p>
+            <a href="#products" class="btn">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="section-subtitle">Who We Are</div>
+        <div class="section-divider"></div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    <strong>DRAGON MOTO</strong> is a premium motorcycle marketplace operated by
+                    <strong>Guangzhou Chuan Yang Wen Hua Chuan Bo You Xian Gong Si</strong>.
+                    We specialize in sourcing and delivering high-performance motorcycles,
+                    genuine OEM parts, and professional riding equipment to enthusiasts worldwide.
+                </p>
+                <p>
+                    Our team has deep connections with authorized dealers across Japan, Italy,
+                    Germany, and the United States, ensuring every product we offer is authentic
+                    and competitively priced. Whether you're looking for a Kawasaki ZX-6R,
+                    a Ducati Panigale V4, or custom performance upgrades, we've got you covered.
+                </p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-box">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Brands</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Authentic</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products">
+        <h2 class="section-title">Our Products</h2>
+        <div class="section-subtitle">What We Offer</div>
+        <div class="section-divider"></div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-icon">&#127949;</div>
+                <h3>Motorcycles</h3>
+                <p>Street, sport, off-road, and electric motorcycles from top manufacturers worldwide.</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">&#128295;</div>
+                <h3>Performance Parts</h3>
+                <p>OEM and aftermarket parts — exhausts, brakes, suspension, and engine upgrades.</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">&#129509;</div>
+                <h3>Riding Gear</h3>
+                <p>Helmets, suits, gloves, boots, and protective gear from premium brands.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shipping -->
+    <section id="shipping">
+        <h2 class="section-title">Global Shipping</h2>
+        <div class="section-subtitle">We Deliver Worldwide</div>
+        <div class="section-divider"></div>
+        <div class="shipping-list">
+            <div class="shipping-item">
+                <div class="shipping-flag">&#127471;&#127477;</div>
+                <div class="shipping-info">
+                    <h4>Japan</h4>
+                    <p>Kawasaki, Yamaha, Honda, Suzuki</p>
+                </div>
+            </div>
+            <div class="shipping-item">
+                <div class="shipping-flag">&#127470;&#127481;</div>
+                <div class="shipping-info">
+                    <h4>Italy</h4>
+                    <p>Ducati, MV Agusta, Aprilia</p>
+                </div>
+            </div>
+            <div class="shipping-item">
+                <div class="shipping-flag">&#127465;&#127466;</div>
+                <div class="shipping-info">
+                    <h4>Germany</h4>
+                    <p>BMW Motorrad</p>
+                </div>
+            </div>
+            <div class="shipping-item">
+                <div class="shipping-flag">&#127482;&#127480;</div>
+                <div class="shipping-info">
+                    <h4>United States</h4>
+                    <p>Harley-Davidson, Indian</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="section-subtitle">Get In Touch</div>
+        <div class="section-divider"></div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Company Information</h3>
+                <div class="label">Business Name</div>
+                <p>Guangzhou Chuan Yang Wen Hua Chuan Bo You Xian Gong Si</p>
+
+                <div class="label">Brand</div>
+                <p>DRAGON MOTO - Extreme Motor World</p>
+
+                <div class="label">Industry</div>
+                <p>Sports & Outdoor Retail — Motorcycle Sales</p>
+
+                <div class="label">Email</div>
+                <p>info@dragonmoto.com</p>
+
+                <div class="label">Business Hours</div>
+                <p>Monday - Saturday: 9:00 - 21:00 (GMT+8)</p>
+            </div>
+            <div class="contact-form">
+                <input type="text" placeholder="Your Name">
+                <input type="email" placeholder="Email Address">
+                <textarea placeholder="How can we help you?"></textarea>
+                <button class="btn" style="width:100%">Send Message</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">DRAGON MOTO</div>
+            <div class="footer-desc">Extreme Motor World — Premium Motorcycle Marketplace</div>
+            <div class="footer-company">
+                &copy; 2026 Guangzhou Chuan Yang Wen Hua Chuan Bo You Xian Gong Si<br>
+                All rights reserved.
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
